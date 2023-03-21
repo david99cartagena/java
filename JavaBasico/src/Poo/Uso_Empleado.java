@@ -47,7 +47,25 @@ public class Uso_Empleado {
          */
         Jefatura jefa_Finanzas = (Jefatura) misEmpleados[5];
         jefa_Finanzas.estableceIncentivo(55000);
+        /*
+        Empleado director_comercial = new Jefatura("Sandra", 1500, 2011, 02, 17);
+        Comparable ejemplo=new Empleado("Duvan", 78000, 2015, 07, 07);
+        
+        if (director_comercial instanceof Empleado) {
+            System.err.println("Es de tipo jefatura");
+        }
+        if (ejemplo instanceof Comparable) {
+            System.err.println("Implementa la interfaz Comparable");
+        }
+         */
+
         System.out.println(jefa_Finanzas.tomarDecisiones("Soy el jefe papus"));
+
+        System.out.println("El jefe" + jefa_Finanzas.dame_Nombre()
+                + " Tiene un bonus de " + jefa_Finanzas.establece_bonus(1000));
+
+        System.out.println(misEmpleados[3].dame_Nombre() + " Tiene un bonus de: "
+                + misEmpleados[3].establece_bonus(200));
         /*
         for (int i = 0; i < 3; i++) {
             misEmpleados[i].sube_Sueldo(5);
@@ -85,7 +103,7 @@ public class Uso_Empleado {
 
 }
 
-class Empleado implements Comparable {
+class Empleado implements Comparable, Trabajadores {
 
     //Constructor por defecto lleva ()
     public Empleado(String nom, double sue, int agno, int mes, int dia) {//Constructor con parametros
@@ -140,6 +158,11 @@ class Empleado implements Comparable {
     private Date altaContrato;
     private static int IdSiguiente;
     private int Id;
+
+    @Override
+    public double establece_bonus(double gratificacion) {
+        return Trabajadores.bonus_base + gratificacion;
+    }
 }
 
 class Jefatura extends Empleado implements Jefes {
@@ -155,6 +178,12 @@ class Jefatura extends Empleado implements Jefes {
 
     public void estableceIncentivo(double b) {
         incentivo = b;
+    }
+
+    @Override
+    public double establece_bonus(double gratificacion) {
+        double prima = 2000;
+        return Trabajadores.bonus_base + gratificacion + prima;
     }
 
     // reemplaza el metodo q hereda de la clase empleado
