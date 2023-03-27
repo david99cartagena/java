@@ -10,7 +10,8 @@ package Poo;
  * @author david
  */
 public interface Jefes extends Trabajadores {
-
+    
+    // Java Oficial en cursiva son interfaces
     public abstract String tomarDecisiones(String decision);
 
 }

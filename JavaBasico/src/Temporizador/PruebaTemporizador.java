@@ -4,7 +4,9 @@
  */
 package Temporizador;
 
+import java.awt.event.*;
 import javax.swing.*;
+import java.util.Date;
 
 /**
  *
@@ -13,6 +15,22 @@ import javax.swing.*;
 public class PruebaTemporizador {
 
     public static void main(String[] args) {
-        Timer miTemporizador = new Timer(5000, oyente);
+
+        DameLaHora oyente = new DameLaHora();
+        Timer miTemporizador = new Timer(8000, oyente);
+        miTemporizador.start();
+        JOptionPane.showMessageDialog(null, "Presiona aceptar para detener");
+        System.exit(0);
+
+    }
+}
+
+class DameLaHora implements ActionListener {
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Date ahora = new Date();
+        System.out.println("La hora cada 8 sg: " + ahora);
+
     }
 }
