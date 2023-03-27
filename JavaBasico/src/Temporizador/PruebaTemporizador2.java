@@ -43,7 +43,6 @@ class Reloj {
     private boolean sonido;
     
     //Se usa para evitar metodos de acceso getters y setters
-    
     private class DameLaHora2 implements ActionListener {
 
         @Override
